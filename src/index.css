@@ -1,0 +1,14 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Raleway', sans-serif;
+}
+body {
+  margin: 0;
+  font-family: 'Raleway', sans-serif !important;
+  box-sizing: border-box;
+  line-height: 1.5;
+  background-color: rgba(28, 134, 209, 1) !important;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}

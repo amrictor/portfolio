@@ -1,0 +1,23 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "outDir": "../dst/",
+    "target": "ESNEXT",
+    "typeRoots": [
+        "../../typings",
+        "../../node_modules/@types"
+    ],
+    "jsxImportSource": "@emotion/react"
+  }
+}
