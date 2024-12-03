@@ -2,5 +2,33 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
-  ]
+  ],
+  "assignees": ["amrictor"],
+  "lockFileMaintenance": {
+    "enabled": true,
+  },
+  "patch": {
+    "automerge": true
+  },
+  "minor": {
+    "enabled": false,
+    "automerge": true,
+    "stabilityDays": 5,
+    "prCreation": "not-pending"
+  },
+  "major": {
+    "enabled": false
+  },
+  "pin": {
+    "automerge": true
+  },
+  "separateMajorMinor": true,
+  "separateMinorPatch": true,
+  "enabledManagers": ["npm", "yarn"],
+  "automergeSchedule": [
+      "before 6am"
+  ]  ,
+  "schedule": [
+    "at any time"
+  ]  
 }
