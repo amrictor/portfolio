@@ -5,7 +5,7 @@
   ],
   "assignees": ["amrictor"],
   "lockFileMaintenance": {
-    "enabled": true,
+    "enabled": true
   },
   "patch": {
     "automerge": true
@@ -27,7 +27,7 @@
   "enabledManagers": ["npm", "yarn"],
   "automergeSchedule": [
       "before 6am"
-  ]  ,
+  ],
   "schedule": [
     "at any time"
   ]  
