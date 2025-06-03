@@ -20,7 +20,7 @@ const Contact: React.FC = () => {
     >
       <Grid item xs={6} md={3}>
         <ContactMethod
-          href="mailto:amrictor%40gmail.com" 
+          href="mailto:amrictor@gmail.com" 
           Icon={Email}
           label="Email"
         />
