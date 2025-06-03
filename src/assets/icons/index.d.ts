@@ -1,4 +1,4 @@
-import { IconTree, IconType } from 'react-icons/lib'
+import { IconTree, IconType } from 'react-icons/lib';
 
 export declare const Cpp: IconType;
 export declare const Csharp: IconType;

@@ -1,5 +1,5 @@
-import React from 'react'
 import { Box } from '@mui/material';
+import React from 'react';
 
 interface TechBadgesProps {
   items: string[];
@@ -23,4 +23,4 @@ export const TechBadges: React.FC<TechBadgesProps> = ({ items }) => {
       )}
     </Box>
   );
-}
+};

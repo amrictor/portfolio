@@ -1,38 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-import { Theme, ThemeProvider, createTheme } from '@mui/material/styles';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
+import App from './App.tsx';
 
-declare module "@mui/material/styles/createMixins" {
-  interface Mixins {
-    flexCentered: Pick<CSSProperties, 'display' | 'justifyContent' | 'alignItems'>
-  }
-};
+import './index.css';
+import { ThemeProvider } from '@mui/material/styles';
 
-const theme: Theme = createTheme({
-  palette: {
-    primary: {
-      main: 'rgba(28, 134, 209, 1)',
-    },
-  },
-  typography: {
-    fontFamily: "'Raleway', sans-serif",
-    caption: {
-      color: 'white',
-      fontSize: 14,
-      fontWeight: 300
-    }
-  },
-  mixins: {
-    flexCentered: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center'
-    }
-  }
-});
+import { theme } from './theme.ts';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -40,4 +14,4 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <App />
     </ThemeProvider>
   </React.StrictMode>,
-)
+);

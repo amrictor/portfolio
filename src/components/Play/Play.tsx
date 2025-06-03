@@ -1,7 +1,10 @@
-import React from 'react';
-import data from './data';
 import { useTheme } from '@mui/material';
+import React from 'react';
+
+
 import { Gallery } from '../Gallery';
+import { SectionHeader } from '../SectionHeader';
+import data from './data';
 
 
 export const Play: React.FC = () => {
@@ -13,28 +16,8 @@ export const Play: React.FC = () => {
       minHeight: '100vh',
       padding: 75
     }}>
-      <div css={{
-        fontSize: 40,
-        margin: '0px 30px',
-        color: 'white',
-        textTransform: 'lowercase',
-        fontFamily: "'Raleway', sans-serif",
-        letterSpacing: 3,
-        whiteSpace: 'nowrap',
-        marginTop: 0,
-        position: 'relative',
-        paddingBottom: 15,
-        '&::after': {
-          content: '',
-          position: 'absolute',
-          bottom: 0,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          height: 1,
-          width: 100
-        }
-      }}>Projects</div>
+      <SectionHeader>Projects</SectionHeader>
       <Gallery data={data}/>
     </div>
-  )
+  );
 };

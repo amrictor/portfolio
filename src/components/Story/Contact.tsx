@@ -1,46 +1,53 @@
-import React from 'react'
 
-import { Typography, useTheme } from '@mui/material';
 import { Description, Email, GitHub, LinkedIn } from '@mui/icons-material';
+import { Grid, useTheme } from '@mui/material';
 
-import resume from '../../assets/resume.pdf'
+import React from 'react';
+import resume from '../../assets/resume.pdf';
 import { ContactMethod } from '../ContactMethod';
+
 
 
 const Contact: React.FC = () => {
   const theme = useTheme();
   return (
-    <div css={{
-      ...theme.mixins.flexCentered,
-      flexWrap: 'wrap',
-      fontSize: 30,
-      marginLeft: -15,
-      [theme.breakpoints.up('md')]: {
-        justifyContent: 'flex-start',
-      },
-    }}>
-      <ContactMethod
-        href="mailto:amrictor%40gmail.com" 
-        Icon={Email}
-        label="Email"
-      />
-      <ContactMethod 
-        href={resume}
-        Icon={Description}
-        label="Resume"
-      />
-      <ContactMethod 
-        href="https://linkedin.com/in/amrictor" 
-        Icon={LinkedIn}
-        label="LinkedIn"
-      />
-      <ContactMethod 
-        href="https://github.com/amrictor" 
-        Icon={GitHub}
-        label="Github"
-      />
-    </div>
+    <Grid 
+      css={{ 
+        maxWidth: 450,
+        margin: theme.spacing(1, 0)
+      }} 
+      container
+    >
+      <Grid item xs={6} md={3}>
+        <ContactMethod
+          href="mailto:amrictor%40gmail.com" 
+          Icon={Email}
+          label="Email"
+        />
+      </Grid>
+      <Grid item xs={6} md={3}>
+        <ContactMethod 
+          href={resume}
+          Icon={Description}
+          label="Resume"
+        />
+      </Grid>
+      <Grid item xs={6} md={3}>
+        <ContactMethod
+          href="https://linkedin.com/in/amrictor" 
+          Icon={LinkedIn}
+          label="LinkedIn"
+        />
+      </Grid>
+      <Grid item xs={6} md={3}>
+        <ContactMethod
+          href="https://github.com/amrictor" 
+          Icon={GitHub}
+          label="Github"
+        />
+      </Grid>
+    </Grid>
   );
-}
+};
 
 export default Contact;

@@ -1,6 +1,6 @@
-import React from 'react'
-
 import { ButtonBase, useTheme } from '@mui/material';
+import React from 'react';
+
 
 interface DirectoryProps<Item> {
   items: Item[];
@@ -43,10 +43,10 @@ export const Directory = <Item,>({ items, selected, onSelect, formatItem }: Dire
             margin: 2,
             fontWeight: 600
           }}
-         onClick={() => onSelect(item)}
+          onClick={() => onSelect(item)}
         >
           {formatItem(item)}
         </ButtonBase>)}
     </div>
   );
-}
+};

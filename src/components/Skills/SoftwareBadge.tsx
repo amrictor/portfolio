@@ -1,5 +1,5 @@
-import { Typography, useTheme } from "@mui/material";
-import React from "react";
+import { Typography, useTheme } from '@mui/material';
+import React from 'react';
 
 interface SoftwareBadgeProps {
   label: string;
@@ -27,11 +27,11 @@ export const SoftwareBadge: React.FC<SoftwareBadgeProps> = ({ label, Icon }) => 
         }
       }
     }}>
-        <Icon/>
-        <Typography variant='caption' css={{
-          transition: '.2s',
-          opacity: 0,
-        }}>{label}</Typography>
+      <Icon/>
+      <Typography variant='caption' css={{
+        transition: '.2s',
+        opacity: 0,
+      }}>{label}</Typography>
     </div>
   );
-}
+};

@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { professional } from './data';
 import { CalendarToday, Link, PinDrop, Launch } from '@mui/icons-material';
-import { Gallery } from '../Gallery';
 import { Box, useTheme } from '@mui/material';
-import { Directory } from './Directory';
+
+
+import { Gallery } from '../Gallery';
+import { SectionHeader } from '../SectionHeader';
 import { TechBadges } from '../TechBadges/TechBadges';
+import { professional } from './data';
 
 interface LinkItemProps extends React.PropsWithChildren {
   Icon: React.FC;
@@ -28,72 +29,45 @@ const LinkItem: React.FC<LinkItemProps> = ({ Icon, children }) =>
     }}>
       <Icon/>
     </span>
-  </Box>
+  </Box>;
 
 export const Work: React.FC = () => {
-  const [job, setJob] = useState(professional[0]);
-  const jobInfoRef = useRef();
   const theme = useTheme();
-
-  useEffect(() => {
-    if(jobInfoRef.current) {
-      (jobInfoRef.current as HTMLElement).scrollTop = 0;
-    }
-  }, [job])
  
   return (
     <div id='work' css={{
-      padding: '50px',
       minHeight: '100vh',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      [theme.breakpoints.down('xs')]: {
-        padding: '25px',
-      }
+      padding: '75px 100px',
+      [theme.breakpoints.down('md')]: {
+        padding: '75px 25px',
+      },
     }}>
+      <SectionHeader>Experience</SectionHeader>
       <div css={{
-        fontSize: 40,
-        margin: '0px 30px',
-        color: 'white',
-        textTransform: 'lowercase',
-        fontFamily: "'Raleway', sans-serif",
-        letterSpacing: 3,
-        whiteSpace: 'nowrap',
-        marginTop: 0,
-        position: 'relative',
-        paddingBottom: 15,
-        '&::after': {
-          content: '',
-          position: 'absolute',
-          bottom: 0,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          height: 1,
-          width: 100
-        }
-      }}>Experience</div>
-      <div css={{
-        alignItems: 'flex-start',
-        display: 'flex',
-        [theme.breakpoints.down('sm')]: {
-          flexDirection: 'column',
-          alignItems: 'center'
-        },
-        flexShrink: 1,
-        maxWidth: 1000,
+        // alignItems: 'flex-start',
+        // display: 'flex',
+        // [theme.breakpoints.down('sm')]: {
+        //   flexDirection: 'column',
+        //   alignItems: 'center'
+        // },
+        // flexShrink: 1,
+        maxWidth: 850,
         color: 'white',
         fontSize: 18,
       }}>
-        <Directory 
+        {/* <Directory 
           items={professional}
           formatItem={(item: any) => item.company}
           onSelect={setJob}
           selected={job}
-        />
-        <Box display="flex" flexDirection='column' alignItems='center' justifyContent='center'>
+        /> */}
+        {professional.map(job => <Box display="flex" flexDirection='column' alignItems='center' justifyContent='center'>
           <div id='job_info' css={{
+            margin: 15,
             fontSize: 16,
             display: 'flex',
             flexDirection: 'column',
@@ -166,20 +140,20 @@ export const Work: React.FC = () => {
               }}>
                 { job.logo && window.innerWidth > 350
                   ? <img css={{
-                      maxWidth: 250,
-                      [theme.breakpoints.down('sm')]: {
-                        marginTop: 20
-                      }
-                    }} src={job.logo} alt={job.company} /> 
-                  : <Box fontSize={36} fontWeight={600}>
-                      {job.company}
-                    </Box>
+                    maxWidth: 200,
+                    [theme.breakpoints.down('sm')]: {
+                      marginTop: 20
+                    }
+                  }} src={job.logo} alt={job.company} /> 
+                  : <Box fontSize={28} fontWeight={600}>
+                    {job.company}
+                  </Box>
                 }
               </div>
               
             </div>
             {job.position && <Box mt='15px' fontSize={22} fontWeight={600} textAlign='center'>
-                {job.position}
+              {job.position}
             </Box>}
 
             {job.images && job.images.length > 0 && 
@@ -201,9 +175,12 @@ export const Work: React.FC = () => {
             <div css={{
               '& ul': {
                 paddingLeft: 25,
+                '& li': {
+                  paddingTop: 5
+                }
               },
               overflow: 'auto',
-              maxHeight: 300,
+              // maxHeight: 300,
               paddingRight: 10,
               '&::-webkit-scrollbar': {
                 width: 12,
@@ -221,8 +198,8 @@ export const Work: React.FC = () => {
               {job.description}
             </div>
           </div>
-        </Box>
+        </Box>)}
       </div>
     </div>
   );
-}
+};

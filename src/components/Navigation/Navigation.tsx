@@ -1,25 +1,27 @@
 
-import React, { useMemo } from "react";
+import { Box, useMediaQuery } from '@mui/material';
+import { alpha, Theme, useTheme } from '@mui/material/styles';
+import React, { useMemo } from 'react';
 
-import { Box, IconButton, useMediaQuery, Link as MUILink } from "@mui/material";
-import { alpha, Theme, useTheme } from "@mui/material/styles";
-import { AiOutlineToTop } from "react-icons/ai";
 
-import { Link } from "./Link";
-import useScrollPosition from "../../hooks/useScrollPosition";
-import { VerticalAlignTop } from "@mui/icons-material";
-import { TiArrowUpThick } from "react-icons/ti";
-import { BubbleButton } from "./BubbleButton";
+import useScrollPosition from '../../hooks/useScrollPosition';
+import { BubbleButton } from './BubbleButton';
+import { Link } from './Link';
+
 
 const Title: React.FC<{ hidden: boolean }> = ({ hidden }) => {
   return (
     <div css={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       maxWidth: hidden ? 0 : 350,
       maxHeight: hidden ? 0 : 60,
-      margin: hidden? 0 : '0px 30px',      
+      margin: hidden ? 0 : '0px 30px',      
       fontSize: 40,
+      color: hidden ? 'rgba(0,0,0,0)' : 'black',
       textTransform: 'lowercase',
-      fontFamily: "'Raleway', sans-serif",
+      fontFamily: '\'Raleway\', sans-serif',
       letterSpacing: 5,
       transition: '.8s',
       overflow: 'hidden',
@@ -28,13 +30,13 @@ const Title: React.FC<{ hidden: boolean }> = ({ hidden }) => {
         fontSize: '11vw'
       }
     }} id='title'>Abigail Rictor</div>
-  )
-}
+  );
+};
 
 export const Navigation: React.FC = () => {
   const smallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
   const scrollHeight = useScrollPosition();
-  const isScrolledDown = useMemo(() => scrollHeight > (0.6*window.innerHeight), [scrollHeight, window.innerHeight])
+  const isScrolledDown = useMemo(() => scrollHeight > (0.6*window.innerHeight), [scrollHeight, window.innerHeight]);
   const theme = useTheme();
 
   return (
@@ -45,66 +47,37 @@ export const Navigation: React.FC = () => {
       flexDirection: 'column',
       alignItems: 'center',
       maxWidth: 1200, 
-      margin: '0px auto  100vh',
+      height: '80vh',
+      margin: '0px auto',
       transition: '.2s',
       position: 'sticky',
       top: 0,
       zIndex: 2,
+      pointerEvents: 'none',
+      [theme.breakpoints.down('lg')]: {
+        minHeight: 'calc(100vh - 70px)',
+      },
     }}>
       {smallScreen && <Title hidden={isScrolledDown}/>}
-        <Box 
-          id="links" 
-          css={{ 
-            ...theme.mixins.flexCentered,
-            flexWrap: 'wrap',
-            padding: 5,
-            borderRadius: 25,
-            background: isScrolledDown ? alpha(theme.palette.primary.main, 0.7) : 'transparent',
-            transition: '.2s'
-          }}
-        >
-          <Link href='#story' >Story</Link>
-          <Link href='#skills' >Skills</Link>
-          {!smallScreen && <Title hidden={isScrolledDown}/>}
-          <Link href='#work' >Work</Link>
-          <Link href='#play' >Play</Link>
-        </Box>
-        <BubbleButton hidden={!isScrolledDown}/>
-        {/* <IconButton 
-          css={{
-            position: 'fixed',
-            transition: '.2s',
-            transform: isScrolledDown ? 'translateY(0)' : 'translateY(100px)',
-            color: 'white',
-            background: alpha('rgb(255,255,255)', 0.2),
-            bottom: 15,
-            right: 15,
-            border: '3px solid white',
-            '&:after': {
-              position: 'fixed',
-              bottom: 34,
-              right: 8,
-              content: '""',
-              height: 3,
-              width: 3,
-              background: 'white',
-              borderRadius: 100,
-            },
-            '&:before': {
-              position: 'fixed',
-              bottom: 38,
-              right: 12,
-              content: '""',
-              height: 5,
-              width: 5,
-              background: 'white',
-              borderRadius: 100,
-            }
-          }}
-          size="large"
-          component={MUILink} 
-          href='#'
-        ><TiArrowUpThick/></IconButton> */}
+      <Box 
+        id="links" 
+        css={{ 
+          ...theme.mixins.flexCentered,
+          flexWrap: 'wrap',
+          padding: 5,
+          borderRadius: 25,
+          background: isScrolledDown ? alpha(theme.palette.primary.main, 0.7) : 'transparent',
+          transition: '.2s',
+          pointerEvents: 'auto',
+        }}
+      >
+        <Link isScrolledDown={isScrolledDown} href='#story' >Story</Link>
+        <Link isScrolledDown={isScrolledDown} href='#skills' >Focus</Link>
+        {!smallScreen && <Title hidden={isScrolledDown}/>}
+        <Link isScrolledDown={isScrolledDown} href='#work' >Work</Link>
+        <Link isScrolledDown={isScrolledDown} href='#play' >Play</Link>
+      </Box>
+      <BubbleButton hidden={!isScrolledDown}/>
     </div>
-  )
-}
+  );
+};

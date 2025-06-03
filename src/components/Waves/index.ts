@@ -1,2 +1,1 @@
-import { Waves } from './waves';
-export default Waves;
+export { Waves } from './Waves';

@@ -1,8 +1,8 @@
-import { withStyles, Dialog, DialogTitle, IconButton, DialogContent, useTheme, Box, Button, ButtonBase } from "@mui/material";
-import { css } from '@emotion/css'
-import { UncontrolledCarousel } from 'reactstrap'
-import { Close, GitHub, Link, Description } from "@mui/icons-material";
-import React, { useState } from "react";
+import { css } from '@emotion/css';
+import { Close } from '@mui/icons-material';
+import { Dialog, DialogTitle, IconButton, DialogContent, useTheme, Box, ButtonBase } from '@mui/material';
+import React, { useState } from 'react';
+import { UncontrolledCarousel } from 'reactstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -84,7 +84,7 @@ const GalleryModal: React.FC<GalleryModalProps> = ({ item, onClose, imageOnly })
           fontSize: 25,
           textTransform: 'lowercase',
           letterSpacing: imageOnly ? 0 : 3,
-            textAlign: 'center',
+          textAlign: 'center',
         }}>
           {item.title}
           <IconButton aria-label="close" size="small" onClick={onClose} css={{
@@ -101,8 +101,8 @@ const GalleryModal: React.FC<GalleryModalProps> = ({ item, onClose, imageOnly })
       </div> 
     </Dialog>
       
-  )
-}
+  );
+};
 
 interface GalleryProps {
   data: GalleryItem[],
@@ -150,20 +150,20 @@ export const Gallery: React.FC<GalleryProps> = ({ data, imageOnly, small }) => {
                 height: '100%'
               }} src={item.images[0].src} alt={item.images[0].src}/>
               <div css={{
-                  padding: 15,
-                  zIndex: '1 !important',
-                  height: '100%',
-                  width: '100%',
-                  position: 'absolute',
-                  top: 0,
-                  cursor: 'pointer',
-                  background: 'rgba(0,0,0,0)',
-                  color: 'transparent',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  transition: '.2s',
-                  fontSize: 22,
+                padding: 15,
+                zIndex: '1 !important',
+                height: '100%',
+                width: '100%',
+                position: 'absolute',
+                top: 0,
+                cursor: 'pointer',
+                background: 'rgba(0,0,0,0)',
+                color: 'transparent',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                transition: '.2s',
+                fontSize: 22,
               }}>{item.title}</div>
             </ButtonBase>
           )}
