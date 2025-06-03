@@ -14,10 +14,6 @@ function drawSin(ctx: CanvasRenderingContext2D, w: number, h: number, color: Col
   ctx.quadraticCurveTo(w / 4, dY - wav, w / 2, dY);
   ctx.lineTo(w / 2, dY);
   ctx.quadraticCurveTo((w * 3) / 4, dY + wav, w, dY);
-
-  
-  
-
   ctx.lineTo(w, h);
   ctx.lineTo(0, h);
   ctx.fillStyle = color;
@@ -60,19 +56,19 @@ function addWave(ctx0: CanvasRenderingContext2D, color: Color, rate: number = 0.
   return animation;
 }
 
-export const calcWave = (ratio: number, base: number) => {
+const calcWave = (ratio: number, base: number) => {
   if (ratio > 1) ratio = 1;
   return base*ratio;
 };
 
 
-export const calcFlat = (ratio: number, base: number) => {
+const calcFlat = (ratio: number, base: number) => {
   if (ratio > 1) ratio = 1;
   if (ratio < 0.75) ratio = 0.75;
   return base*ratio;
 };
 
-export const calcSpeed = (ratio: number, base: number) => {
+const calcSpeed = (ratio: number, base: number) => {
   if (ratio > 1) ratio = 1;
   return base*ratio < 0.75 ? 0.75 : base*ratio;
 };
@@ -93,6 +89,7 @@ export const Wave: React.FC<WaveProps> = React.memo(({
   speed
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
   useEffect(() => {
     if (!canvasRef.current || !canvasRef.current.getContext('2d')) return;
     const canvas: HTMLCanvasElement = canvasRef.current;
@@ -125,7 +122,7 @@ export const Wave: React.FC<WaveProps> = React.memo(({
       window.removeEventListener('resize', resizeListener);
       ctx?.clearRect(0, 0, canvas.width, canvas.height);
     };
-  }, []);
+  }, [color, flat, rate, speed, wave]);
 
   return (
     <>

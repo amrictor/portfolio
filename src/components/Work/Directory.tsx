@@ -1,6 +1,4 @@
 import { ButtonBase, useTheme } from '@mui/material';
-import React from 'react';
-
 
 interface DirectoryProps<Item> {
   items: Item[];

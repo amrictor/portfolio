@@ -36,7 +36,7 @@ const Title: React.FC<{ hidden: boolean }> = ({ hidden }) => {
 export const Navigation: React.FC = () => {
   const smallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
   const scrollHeight = useScrollPosition();
-  const isScrolledDown = useMemo(() => scrollHeight > (0.6*window.innerHeight), [scrollHeight, window.innerHeight]);
+  const isScrolledDown = useMemo(() => scrollHeight > (0.6*window.innerHeight), [scrollHeight]);
   const theme = useTheme();
 
   return (
