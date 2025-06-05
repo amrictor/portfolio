@@ -81,6 +81,7 @@ export const BubbleButton: React.FC<{hidden: boolean}> = ({ hidden }) => {
 
   const onClick = () => {
     setClicked(true);
+    window.scrollTo(0, 0);
   };
   
   useEffect(() => {
@@ -94,15 +95,15 @@ export const BubbleButton: React.FC<{hidden: boolean}> = ({ hidden }) => {
   return (
     <div 
       css={{
-        background: alpha(primaryBlue, .4), 
+        backgroundColor: clicked ? 'rgba(0,0,0,0)' : alpha(primaryBlue, .4), 
         borderRadius: '50%', 
         padding: 2, 
         position: 'fixed', 
         bottom: 15, 
         right: 15, 
         zIndex: 1000, 
-        transition: '.2s transform', 
-        transform: hidden ? 'translateY(100px)' : 'translateY(0)',
+        transition: '.2s transform, .5s background-color', 
+        transform: (hidden) ? 'translateY(100px)' : 'translateY(0)',
       }}
     >
       <IconButton
@@ -158,7 +159,6 @@ export const BubbleButton: React.FC<{hidden: boolean}> = ({ hidden }) => {
         ]}
         size="large"
         component={MUILink} 
-        href='#'
       >
         <TiArrowUpThick/>
       </IconButton>
